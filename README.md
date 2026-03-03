@@ -1,279 +1,114 @@
-# 🚌 AI-Based Smart Bus Attendance Management System
+<div align="center">
 
-An intelligent attendance management system that uses real-time face recognition to automatically track student attendance on bus routes. Built with Python, OpenCV, MediaPipe, and PyQt5.
+<img src="https://capsule-render.vercel.app/api?type=waving&color=ff6e96&height=220&section=header&text=AI%20based%20Attendance%20Management&fontSize=42&fontAlignY=35&desc=Machine%20Learning%20/%20AI&descAlignY=55&fontColor=ffffff" alt="Header"/>
 
-![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
-![OpenCV](https://img.shields.io/badge/OpenCV-4.5%2B-green)
-![PyQt5](https://img.shields.io/badge/PyQt5-5.15%2B-orange)
-![MediaPipe](https://img.shields.io/badge/MediaPipe-0.8%2B-red)
+<p align="center">
+  <img src="https://img.shields.io/badge/Type-Machine%20Learning%20%2F%20AI-ff6e96?style=for-the-badge&logo=target&logoColor=black" alt="Type" />
+  <img src="https://img.shields.io/badge/Language-Python-ff6e96?style=for-the-badge&logo=code&logoColor=black" alt="Language" />
+  <img src="https://img.shields.io/badge/Files-34-161b22?style=for-the-badge&logo=files&logoColor=ff6e96" alt="Files" />
+  <img src="https://img.shields.io/badge/License-PROPRIETARY-ff0000?style=for-the-badge&logo=shield&logoColor=white" alt="License" />
+</p>
 
-## ✨ Features
+  <img src="https://img.shields.io/badge/OpenCV-161b22?style=flat-square&logo=opencv&logoColor=ff6e96" alt="OpenCV" />
+  <img src="https://img.shields.io/badge/PyTorch-161b22?style=flat-square&logo=pytorch&logoColor=ff6e96" alt="PyTorch" />
+  <img src="https://img.shields.io/badge/TensorFlow-161b22?style=flat-square&logo=tensorflow&logoColor=ff6e96" alt="TensorFlow" />
 
-- **Real-time Face Detection & Recognition**: Automatically identify students using advanced AI models
-- **Live Camera Feed**: Interactive GUI with real-time video processing
-- **Student Registration System**: Easy-to-use interface for registering new students
-- **Automatic Attendance Logging**: CSV-based attendance records with timestamps
-- **Mask Detection Support**: YOLOv5-based mask detection capabilities
-- **Modern Dark Theme UI**: Professional PyQt5 interface
-- **Flexible Bus Route Management**: Support for multiple bus routes and schedules
-- **Data Persistence**: Secure storage of student data and attendance records
 
-## 🏗️ System Architecture
-
-```
-Smart Bus Attendance System
-├── GUI Layer (PyQt5)
-│   ├── Main Interface
-│   ├── Student Registration
-│   └── Attendance Dashboard
-├── AI Processing Layer
-│   ├── Face Detection (MediaPipe)
-│   ├── Face Recognition (FaceNet)
-│   └── Mask Detection (YOLOv5)
-├── Data Management Layer
-│   ├── Student Database (JSON)
-│   ├── Face Embeddings (PKL)
-│   └── Attendance Logs (CSV)
-└── Core Services
-    ├── Camera Management
-    ├── Model Loading
-    └── Data Processing
-```
-
-## 📋 Prerequisites
-
-- Python 3.8 or higher
-- Webcam/Camera device
-- Minimum 4GB RAM (8GB recommended)
-- CUDA-compatible GPU (optional, for faster processing)
-
-## 🚀 Quick Start
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/Nytrynox/AI-based-Attendance-Management-System.git
-cd AI-based-Attendance-Management-System
-```
-
-### 2. Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### 3. Run the Application
-
-```bash
-python main.py
-```
-
-## 📦 Installation
-
-### Option 1: pip install (Recommended)
-
-```bash
-# Create virtual environment (optional but recommended)
-python -m venv bus_attendance_env
-source bus_attendance_env/bin/activate  # On Windows: bus_attendance_env\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-```
-
-### Option 2: conda install
-
-```bash
-# Create conda environment
-conda create -n bus_attendance python=3.8
-conda activate bus_attendance
-
-# Install dependencies
-pip install -r requirements.txt
-```
-
-## 🎯 Usage Guide
-
-### First Time Setup
-
-1. **Launch the Application**
-   ```bash
-   python main.py
-   ```
-
-2. **Load AI Models**
-   - Click "Load AI Models" button in the main interface
-   - Wait for models to initialize (this may take a few minutes on first run)
-
-3. **Register Students**
-   - Click "Register New Student"
-   - Enter student details (Name, ID, etc.)
-   - Capture multiple face images from different angles
-   - Save the registration
-
-### Daily Operations
-
-1. **Start Attendance Session**
-   - Click "Start Boarding Session"
-   - Position camera to capture students boarding the bus
-   - System automatically recognizes and logs attendance
-
-2. **Monitor Real-time**
-   - View live camera feed with face detection boxes
-   - See recognized students highlighted in green
-   - Unknown faces highlighted in red
-
-3. **Review Attendance**
-   - Check attendance logs in `data/attendance_logs/`
-   - Export data for further analysis
-
-## 📁 Project Structure
-
-```
-bus_face_attendance/
-├── main.py                     # Main application entry point
-├── requirements.txt            # Python dependencies
-├── data/
-│   ├── attendance_logs/        # CSV attendance records
-│   ├── embeddings/            # Face embedding cache
-│   ├── faces/                 # Student face images
-│   └── students/              # Student database (JSON)
-├── gui/
-│   ├── main_gui.py            # Main interface
-│   ├── register_gui.py        # Registration interface
-│   └── utils.py               # GUI utilities
-├── src/
-│   ├── attendance.py          # Attendance management
-│   ├── face_detection.py      # Face detection logic
-│   ├── face_recognition.py    # Face recognition engine
-│   ├── mask_detection.py      # Mask detection (YOLOv5)
-│   └── utils.py               # Core utilities
-└── models/
-    ├── facenet_keras.h5       # FaceNet model
-    └── mask_detection_yolov5s.pt # YOLOv5 mask detection
-```
-
-## 🔧 Configuration
-
-### Camera Settings
-- Default camera index: 0 (change in `src/face_detection.py`)
-- Resolution: 640x480 (adjustable in GUI)
-- FPS: 30 (hardware dependent)
-
-### Recognition Threshold
-- Similarity threshold: 0.6 (adjustable in `src/face_recognition.py`)
-- Detection confidence: 0.5 (adjustable in `src/face_detection.py`)
-
-### Data Storage
-- Student data: `data/students/students.json`
-- Face embeddings: `data/embeddings/embeddings.pkl`
-- Attendance logs: `data/attendance_logs/attendance_YYYYMMDD.csv`
-
-## 🤖 AI Models Used
-
-| Model | Purpose | Framework | Size |
-|-------|---------|-----------|------|
-| FaceNet | Face Recognition | TensorFlow/Keras | ~27MB |
-| MediaPipe Face Detection | Face Detection | MediaPipe | ~2MB |
-| YOLOv5s | Mask Detection | PyTorch | ~14MB |
-
-## 📊 Performance Metrics
-
-- **Face Detection**: ~30 FPS on CPU, ~60 FPS on GPU
-- **Face Recognition**: ~95% accuracy with good lighting
-- **Memory Usage**: ~500MB during operation
-- **Startup Time**: ~10-15 seconds (model loading)
-
-## 🐛 Troubleshooting
-
-### Common Issues
-
-1. **Camera Not Working**
-   ```bash
-   # Check camera permissions and index
-   python test_gui_face_detection.py
-   ```
-
-2. **Package Version Conflicts**
-   ```bash
-   # Fix numpy/mediapipe conflicts
-   pip uninstall numpy pandas tensorflow mediapipe -y
-   pip install numpy==1.24.3 pandas mediapipe tensorflow
-   ```
-
-3. **GUI Not Launching**
-   ```bash
-   # Check PyQt5 installation
-   python -c "from PyQt5.QtWidgets import QApplication; print('PyQt5 OK')"
-   ```
-
-4. **Poor Recognition Accuracy**
-   - Ensure good lighting conditions
-   - Register multiple face angles per student
-   - Clean camera lens
-   - Adjust recognition threshold
-
-### Debug Mode
-
-Enable debug logging by setting:
-```python
-import logging
-logging.basicConfig(level=logging.DEBUG)
-```
-
-## 🔐 Security & Privacy
-
-- **Data Encryption**: Face embeddings are stored securely
-- **Local Processing**: No data sent to external servers
-- **GDPR Compliant**: Easy data deletion and export
-- **Access Control**: Admin-only student management
-
-## 🌟 Contributing
-
-We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md).
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- **OpenCV Team** - For computer vision capabilities
-- **MediaPipe Team** - For efficient face detection
-- **FaceNet Authors** - For face recognition model
-- **PyQt5 Community** - For GUI framework
-- **YOLOv5 Team** - For object detection
-
-## 📞 Support
-
-- 📧 Email: support@smartbusattendance.com
-- 💬 Discord: [Join our community](https://discord.gg/smartbus)
-- 📖 Wiki: [Detailed documentation](https://github.com/Nytrynox/AI-based-Attendance-Management-System/wiki)
-- 🐛 Issues: [Report bugs](https://github.com/Nytrynox/AI-based-Attendance-Management-System/issues)
-
-## 📈 Roadmap
-
-- [ ] Mobile app companion
-- [ ] Cloud synchronization
-- [ ] Multi-language support
-- [ ] Advanced analytics dashboard
-- [ ] Integration with school management systems
-- [ ] Facial recognition for drivers
-- [ ] GPS-based route tracking
+</div>
 
 ---
 
-<p align="center">
-  <strong>🚌 Making school transportation smarter, safer, and more efficient! 🚌</strong>
-</p>
+## Overview
 
-<p align="center">
-  Made with ❤️ by the Smart Bus Attendance Team
-</p>
-# AI-Bus-Attendance-System
+> Initial prototype of face recognition attendance.
+
+**AI based Attendance Management System 1.0** is a proprietary machine learning / ai system engineered by **Karthik Idikuda**. It leverages OpenCV, PyTorch, TensorFlow for its core functionality.
+
+<br/>
+
+## System Architecture
+
+```mermaid
+graph TD;
+    A["Data Acquisition Layer"] -->|Raw Input| B["Preprocessing Engine"];
+    B -->|Frames/Images| C["Computer Vision Module<br/>OpenCV / YOLO"];
+    C -->|Features| D{"Neural Network Core"};
+    D -->|TensorFlow + PyTorch| E["Model Training & Evaluation"];
+    E -->|Predictions| F["Output / Results"];
+
+    classDef ml fill:#0d1117,stroke:#ff6e96,stroke-width:2px,color:#fff;
+    classDef cv fill:#161b22,stroke:#79c0ff,stroke-width:2px,color:#fff;
+    classDef web fill:#21262d,stroke:#56d364,stroke-width:2px,color:#fff;
+    class A,B ml;
+    class C cv;
+    class D,E ml;
+    class F,G web;
+```
+
+<br/>
+
+## Project Structure
+
+```
+AI-based-Attendance-Management-System-1.0/
+  .gitattributes
+  .gitignore
+  LICENSE
+  README.md
+  README_UPDATED.md
+  RECOGNITION_FIX_COMPLETE.md
+  REGISTRATION_FIX_SUMMARY.md
+  fix_dependencies.py
+  launch_attendance_system.py
+  main.py
+  data/
+  gui/
+    __init__.py
+    main_gui.py
+    register_gui.py
+    utils.py
+  models/
+    facenet_keras.h5
+    mask_detection_yolov5s.pt
+  src/
+    attendance.py
+    face_detection.py
+    face_recognition.py
+    face_recognition_backup.py
+    face_recognition_fixed.py
+```
+
+<br/>
+
+## Technical Specifications
+
+| Attribute | Detail |
+|:---|:---|
+| **Primary Language** | `Python` |
+| **Project Category** | `Machine Learning / AI` |
+| **Total Source Files** | `34` |
+| **Frameworks** | `OpenCV`, `PyTorch`, `TensorFlow` |
+| **Key Dependencies** | `torch` | `numpy` | `tensorflow` | `PyQt5` | `opencv-python` | `mediapipe` |
+| **Intellectual Property** | `Strictly Proprietary` |
+
+<br/>
+
+## STRICT LEGAL WARNING & LICENSE
+
+> **PROPRIETARY AND CONFIDENTIAL**
+
+This software and all associated documentation are the **exclusive property of Karthik Idikuda**.
+
+- **NO PERMISSION IS GRANTED** to use, copy, modify, merge, publish, distribute, sublicense, or sell copies of this software without explicit, written consent from the author.
+- **UNAUTHORIZED USE WILL RESULT IN SEVERE LEGAL ACTION.** Any individual or organization found using, referencing, or deploying this code without paying the required licensing fees will face immediate litigation, financial penalties, and potentially criminal prosecution where applicable by law.
+- **TO OBTAIN A LEGAL LICENSE**, you must directly contact Karthik Idikuda to negotiate payment terms.
+
+*By accessing this repository, you acknowledge and accept these strict proprietary terms.*
+
+---
+
+<div align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=600&size=18&pause=1000&color=FF6E96&center=true&vCenter=true&width=535&lines=Engineered+by+Karthik+Idikuda;Machine+Learning+%2F+AI+Architecture;Strict+Proprietary+License" alt="Typing SVG" />
+</div>
+
+<!-- TRACKING: S0ktQUktYmFzZWQtQXR0ZW5kYW5jZS1NYW5hZ2VtZW50LVN5c3RlbS0xLjAtVFJBQ0s= -->
